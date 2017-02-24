@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Titre de la page</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <form>
+        <textarea name="Message" value=""></textarea><br />
+        <button type="button" name="button">crypter</button>
+        <div>
+
+        </div>
+
+    </form>
+</body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // var textareaElement = document.getElementById("textarea");
+        // var crypterElement = document.getElementById("crypter");
+        // var chiffreElement = document.getElementById("chiffre");
+        var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var decallage = 4;
+
+        $('button').click(function() {
+            // var valueTextarea = textareaElement.value;
+            textareaElement = $('textarea').val().toUpperCase();
+            var message = "";
+
+            for (var i = 0; i < textareaElement.length; i++) {
+                var lettre = textareaElement[i];
+                var index = alphabet.indexOf(lettre);
+
+                if (index >= (26 - decallage)) {
+                    message +=
+
+                        index =
+                        alphabet[(index + decallage) % 26]
+                } else if (index == -1) {
+                    message += ' ';
+                } else {
+                    message += alphabet[index + decallage]
+                }
+
+            }
+
+            $('div').html(message);
+        });
+    });
+</script>
+
+</html>
